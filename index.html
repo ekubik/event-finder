@@ -24,9 +24,22 @@
     <div id="current-date-time"></div>
   </header>
   <body>
+      <div><p>
+          Use this handy event locator to find events in your area. Just type
+          in your location below, and let it find the perfect event for you!
+      </p></div>
+      <div id="search-box"><input type=text id="keywords" name="event-search"
+        > </input> <button id="searchBtn"> Search </button></div>
+      <section id="container">
     <div id="map"></div>
+    <div>
     <h2>Local Events:</h2>
     <div id="events-list"></div>
+    </div>
+</section>
+    <footer>
+<p> Coded as part of the Monash Coding Bootcamp program 2022</p>
+    </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="./assets/script.js"></script>
   </body>

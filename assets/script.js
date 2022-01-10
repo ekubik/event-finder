@@ -47,3 +47,31 @@ function initMap(data) {
     zoom: 12,
   });
 }
+
+var city ="Melbourne"
+
+
+
+var queryURL="https://app.ticketmaster.com/discovery/v2/events.json?&classificationName=music&city="+city+"&apikey="+apiKeyTM
+function getApi(){
+    
+  fetch(queryURL)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+      console.log(data)
+      for (var i=0;i<5;i++){
+        var displayEl= document.createElement('p')
+         eventsListDiv.append(displayEl)
+        displayEl.innerHTML="<strong>Name:</strong>"+(data._embedded.events[i].name)+'<br>'
+        displayEl.innerHTML+="<strong>Address:</strong>"+JSON.stringify((data._embedded.events[i]._embedded.venues[0].address.line1))+"<br>"
+        //displayEl.innerHTML+=JSON.stringify((data._embedded.events[i]._embedded.venues[0].location))+"<br>"
+        displayEl.innerHTML+="<strong>Date:</strong>"+(data._embedded.events[i].dates.start.localDate)+" <br>"
+        displayEl.innerHTML+="<strong>Time:</strong>"+(data._embedded.events[i].dates.start.localTime)+"<br/>"
+       
+      }
+  })
+}
+ 
+getApi()

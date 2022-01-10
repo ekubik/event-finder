@@ -16,6 +16,7 @@ var userCity;
 var today = moment();
 currentTimeDiv.textContent = today.format("dddd, Do MMM, YYYY [at] h:mm a");
 
+
 fetch(geolocationApiUrl)
   .then(function (response) {
     return response.json();
@@ -26,16 +27,23 @@ fetch(geolocationApiUrl)
     userLatitude = data.latitude;
     userLongitude = data.longitude;
     userCity = data.city;
+
+    console.log(userLatitude);
+    console.log(userLongitude);
+
+    initMap(data)
   });
 
 
 
 let map;
-initMap();
 
-function initMap() {
+function initMap(data) {
+  console.log("initMap passing:", data);
+  console.log("userLatitude:", userLatitude);
+  console.log("userLongitude:", userLongitude);
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 8,
+    center: { lat: userLatitude, lng: userLongitude },
+    zoom: 12,
   });
 }

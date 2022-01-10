@@ -10,5 +10,4 @@ const eventsListDiv = document.getElementById("events-list");
 
 // current time and day
 var today = moment();
-currentTimeDiv.text(today.format("dddd, Do MMM, YYYY"));
-currentTimeDiv.text(today.format("[at] h:mm a"));
+currentTimeDiv.textContent = today.format("dddd, Do MMM, YYYY [at] h:mm a");

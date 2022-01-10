@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Event Finder</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
   <link
     href="https://fonts.googleapis.com/css2?family=Comforter&family=Comforter+Brush&family=Nunito:wght@200&family=Outfit:wght@100&display=swap"
     rel="stylesheet" />
@@ -31,7 +32,7 @@
   </form>
 
   <section id="container" class="container flex flex-row">
-    <div id="map" class="container">GOOGLE MAP HERE</div>
+    <div id="map" width="100%" height="400px"></div>
 
     <div class="container flex flex-col">
       <h2>Local Events:</h2>
@@ -41,8 +42,13 @@
   <footer>
     <p> Coded as part of the Monash Coding Bootcamp program 2022</p>
   </footer>
+
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiZYv6s5ocv7IYkiRQLleoe8MXRsMqtRc&callback=initMap&v=weekly"
+    async></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
   <script src="./assets/script.js"></script>
+
 </body>
 
 </html>

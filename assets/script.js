@@ -16,6 +16,7 @@ var userCity;
 var today = moment();
 currentTimeDiv.textContent = today.format("dddd, Do MMM, YYYY [at] h:mm a");
 
+//find location of user's computer
 fetch(geolocationApiUrl)
   .then(function (response) {
     return response.json();

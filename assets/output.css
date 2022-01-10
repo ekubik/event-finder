@@ -558,3 +558,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-text-opacity: 1;
   color: rgb(235 217 183 / var(--tw-text-opacity));
 }
+
+#map {
+  width: 1000px;
+  height: 1000px;
+}

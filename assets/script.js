@@ -155,7 +155,7 @@ function getApi() {
           displayEl.innerHTML =
             "<strong>Name:</strong>" + data._embedded.events[i].name + "<br/>";
           //displayEl.innerHTML+="<strong>Address:</strong>"+JSON.stringify((data._embedded.events[i]._embedded.venues[0].address.line1))+"<br>"
-          //displayEl.innerHTML+=JSON.stringify((data._embedded.events[i]._embedded.venues[0].location))+"<br>"
+          displayEl.innerHTML+=JSON.stringify((data._embedded.events[i]._embedded.venues[0].location))+"<br>"
           displayEl.innerHTML +=
             "<strong>Date:</strong>" +
             data._embedded.events[i].dates.start.localDate +

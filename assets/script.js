@@ -13,6 +13,7 @@ var userLongitude;
 var userCity;
 var lat;
 var lon;
+var events;
 
 // current time and day
 var today = moment();
@@ -57,11 +58,22 @@ var queryURL =
 function getApi() {
   fetch(queryURL)
     .then(function (response) {
+      events = [];
       return response.json();
     })
     .then(function (data) {
       console.log(data);
+      lat = Number(
+        data._embedded.events[i]._embedded.venues[0].location.latitude
+      );
+      console.log(lat);
+      lon = Number(
+        data._embedded.events[i]._embedded.venues[0].location.longitude
+      );
+      console.log(lon);
+      var position = new google.maps.LatLng(lat, lon);
       for (var i = 0; i < 5; i++) {
+        events.push(position);
         var displayEl = document.createElement("p");
         eventsListDiv.append(displayEl);
         displayEl.innerHTML =
@@ -82,43 +94,30 @@ function getApi() {
           data._embedded.events[i].dates.start.localTime +
           "<br/>";
 
-        lat = Number(
-          data._embedded.events[i]._embedded.venues[0].location.latitude
-        );
-        console.log(lat);
-        lon = Number(
-          data._embedded.events[i]._embedded.venues[0].location.longitude
-        );
-        console.log(lon);
-
-        displayEventMarker(lat,lon)
-
+        displayEventMarker(lat, lon);
       }
-      ;
-    });}
+    });
+}
 
-  
+//function displayEventMarker(lat,lon) {
+// function initMap() {
+//console.log(lat + lon + "hi");
+//var event = { lat: lat, lng: lon };
 
-  function displayEventMarker(lat,lon) {
-    //function initMap() {
-    console.log(lat + lon + "hi");
-    //var event = { lat: lat, lng: lon };
+//var map = new google.maps.Map(document.getElementById("map"), {
+// zoom: 4,
+// center: new google.maps.LatLng(lat, lon),
+//});
 
-    //var map = new google.maps.Map(document.getElementById("map"), {
-     // zoom: 4,
-     // center: new google.maps.LatLng(lat, lon),
-    //});
+// var eventMarker = new google.maps.Marker({
+// position: new google.maps.LatLng(lat, lon),
+// map: map,
+// });
+//eventMarker.setMap(map);
 
-      var eventMarker = new google.maps.Marker({
-        position: new google.maps.LatLng(lat, lon),
-        map: map,
-      });
-      //eventMarker.setMap(map);
-    
-
-    eventMarker.setMap(map);
-  }
-  //}
+//eventMarker.setMap(map);
+//}
+//}
 //}
 
 getApi();
@@ -126,12 +125,12 @@ getApi();
 //display location markers
 
 //function displayEventMarker(data) {
-  //function initMap() {
- // console.log(data + "hi");
- // var event = { lat: lat, lng: lon };
+//function initMap() {
+// console.log(data + "hi");
+// var event = { lat: lat, lng: lon };
 
- // var map = new google.maps.Map(document.getElementById("map"), {
-   /* zoom: 4,
+// var map = new google.maps.Map(document.getElementById("map"), {
+/* zoom: 4,
     center: event,
   });
 

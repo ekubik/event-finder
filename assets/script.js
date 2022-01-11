@@ -11,11 +11,12 @@ const eventsListDiv = document.getElementById("events-list");
 var userLatitude;
 var userLongitude;
 var userCity;
+var lat;
+var lon;
 
 // current time and day
 var today = moment();
 currentTimeDiv.textContent = today.format("dddd, Do MMM, YYYY [at] h:mm a");
-
 
 fetch(geolocationApiUrl)
   .then(function (response) {
@@ -31,10 +32,8 @@ fetch(geolocationApiUrl)
     console.log(userLatitude);
     console.log(userLongitude);
 
-    initMap(data)
+    initMap(data);
   });
-
-
 
 let map;
 
@@ -48,30 +47,77 @@ function initMap(data) {
   });
 }
 
-var city ="Melbourne"
+var city = "Melbourne";
 
-
-
-var queryURL="https://app.ticketmaster.com/discovery/v2/events.json?&classificationName=music&city="+city+"&apikey="+apiKeyTM
-function getApi(){
-    
+var queryURL =
+  "https://app.ticketmaster.com/discovery/v2/events.json?&classificationName=music&city=" +
+  city +
+  "&apikey=" +
+  apiKeyTM;
+function getApi() {
   fetch(queryURL)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-      console.log(data)
-      for (var i=0;i<5;i++){
-        var displayEl= document.createElement('p')
-         eventsListDiv.append(displayEl)
-        displayEl.innerHTML="<strong>Name:</strong>"+(data._embedded.events[i].name)+'<br>'
-        displayEl.innerHTML+="<strong>Address:</strong>"+JSON.stringify((data._embedded.events[i]._embedded.venues[0].address.line1))+"<br>"
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      for (var i = 0; i < 5; i++) {
+        var displayEl = document.createElement("p");
+        eventsListDiv.append(displayEl);
+        displayEl.innerHTML =
+          "<strong>Name:</strong>" + data._embedded.events[i].name + "<br>";
+        displayEl.innerHTML +=
+          "<strong>Address:</strong>" +
+          JSON.stringify(
+            data._embedded.events[i]._embedded.venues[0].address.line1
+          ) +
+          "<br>";
         //displayEl.innerHTML+=JSON.stringify((data._embedded.events[i]._embedded.venues[0].location))+"<br>"
-        displayEl.innerHTML+="<strong>Date:</strong>"+(data._embedded.events[i].dates.start.localDate)+" <br>"
-        displayEl.innerHTML+="<strong>Time:</strong>"+(data._embedded.events[i].dates.start.localTime)+"<br/>"
-       
+        displayEl.innerHTML +=
+          "<strong>Date:</strong>" +
+          data._embedded.events[i].dates.start.localDate +
+          " <br>";
+        displayEl.innerHTML +=
+          "<strong>Time:</strong>" +
+          data._embedded.events[i].dates.start.localTime +
+          "<br/>";
+
+        lat = Number(
+          data._embedded.events[i]._embedded.venues[0].location.latitude
+        );
+        console.log(lat);
+        lon = Number(
+          data._embedded.events[i]._embedded.venues[0].location.longitude
+        );
+        console.log(lon);
       }
-  })
+      displayEventMarker(data);
+    });
 }
- 
-getApi()
+
+getApi();
+
+//display location markers
+
+function displayEventMarker(data) {
+  //function initMap() {
+  var event = { lat: lat, lng: lon };
+
+  var map = new google.maps.Map(document.getElementById("map"), {
+   zoom: 4,
+   center: event,
+  });
+
+  for (var i = 0; i < 5; i++) {
+    var eventMarker = new google.maps.Marker({
+      position: event,
+      map: map,
+    });
+    //eventMarker.setMap(map);
+  }
+
+ eventMarker.setMap(map);
+}
+//}
+
+displayEventMarker();

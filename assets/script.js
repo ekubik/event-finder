@@ -90,22 +90,49 @@ function getApi() {
           data._embedded.events[i]._embedded.venues[0].location.longitude
         );
         console.log(lon);
+
+        displayEventMarker(lat,lon)
+
       }
-      displayEventMarker(data);
-    });
-}
+      ;
+    });}
+
+  
+
+  function displayEventMarker(lat,lon) {
+    //function initMap() {
+    console.log(lat + lon + "hi");
+    //var event = { lat: lat, lng: lon };
+
+    //var map = new google.maps.Map(document.getElementById("map"), {
+     // zoom: 4,
+     // center: new google.maps.LatLng(lat, lon),
+    //});
+
+      var eventMarker = new google.maps.Marker({
+        position: new google.maps.LatLng(lat, lon),
+        map: map,
+      });
+      //eventMarker.setMap(map);
+    
+
+    eventMarker.setMap(map);
+  }
+  //}
+//}
 
 getApi();
 
 //display location markers
 
-function displayEventMarker(data) {
+//function displayEventMarker(data) {
   //function initMap() {
-  var event = { lat: lat, lng: lon };
+ // console.log(data + "hi");
+ // var event = { lat: lat, lng: lon };
 
-  var map = new google.maps.Map(document.getElementById("map"), {
-   zoom: 4,
-   center: event,
+ // var map = new google.maps.Map(document.getElementById("map"), {
+   /* zoom: 4,
+    center: event,
   });
 
   for (var i = 0; i < 5; i++) {
@@ -116,8 +143,6 @@ function displayEventMarker(data) {
     //eventMarker.setMap(map);
   }
 
- eventMarker.setMap(map);
+  eventMarker.setMap(map);
 }
-//}
-
-displayEventMarker();
+//}*/

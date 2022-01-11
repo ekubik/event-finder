@@ -25,11 +25,16 @@
       in your location below, and let it find the perfect event for you!
     </p>
   </div>
-  <form id="search-box" class="text-center">
-    <input type=text id="keywords" name="event-search" placeholder="Enter a location"
-      class="border-gray-700 rounded"></input>
-    <button id="searchBtn" class="">Search</button>
-  </form>
+  <div id="search-container">
+    <form id="search-box" class="text-center m-3">
+      <input type=text id="keywords" name="event-search" placeholder="Enter a location"
+        class="border-gray-700 rounded"></input>
+      <button id="searchBtn" class="bg-third text-light rounded">Search</button>
+    </form>
+    <div id="search-history" class="btn"></div>
+    <button type="button" id="clearBtn" class="btn">Clear</button>
+
+  </div>
 
   <section id="container" class="container flex flex-row">
     <div id="map"></div>
@@ -40,7 +45,7 @@
     </div>
   </section>
   <footer>
-    <p> Coded as part of the Monash Coding Bootcamp program 2022</p>
+    <p class="text-sm text-center"> Coded as part of the Monash Coding Bootcamp program 2022</p>
   </footer>
 
 

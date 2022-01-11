@@ -26,7 +26,7 @@
     </p>
   </div>
   <form id="search-box" class="text-center">
-    <input type=text id="keywords" name="event-search" placeholder="Enter a location"
+    <input type=text id="keywords" name="event-search" onfocus="this.value=''" placeholder="Enter a location"
       class="border-gray-700 rounded"></input>
     <button id="searchBtn" class="">Search</button>
   </form>
@@ -43,10 +43,10 @@
     <p> Coded as part of the Monash Coding Bootcamp program 2022</p>
   </footer>
 
-
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
   <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiZYv6s5ocv7IYkiRQLleoe8MXRsMqtRc&callback=initMap&v=weekly"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiZYv6s5ocv7IYkiRQLleoe8MXRsMqtRc&callback=initMap&libraries=places&v=weekly""
     async></script>
   <script src="./assets/script.js"></script>
 </body>

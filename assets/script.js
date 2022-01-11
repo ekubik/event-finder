@@ -87,10 +87,16 @@ function createMarker(place) {
 myBtn.addEventListener("click", function searchCity(event){ 
   event.preventDefault()
   var city=document.getElementById("keywords").value
+  if (city === '' || !isNaN(city)) {
+    alert('Please Enter a city or a keyword.');
+    return;}
+  else{
     localStorage.setItem("Location",city)
     initMap()
-    getApi()
+    getApi()}
   })
+
+  myBtn.addEventListener("click",appendCities)
  
 //retrieving events data and displaying them  
 function getApi(){
@@ -102,17 +108,39 @@ function getApi(){
   })
   .then(function (data) {
       console.log(data)
-      $("#events-list").html('<div></div>');  
+      $("#events-list").html('<div></div>'); 
+      if(data.page.totalElements==0){var displayEl= document.createElement('p')
+      eventsListDiv.append(displayEl)
+     displayEl.innerHTML="No Events for this city"}
+      else{ 
       for (var i=0;i<10;i++){
         var displayEl= document.createElement('p')
          eventsListDiv.append(displayEl)
         displayEl.innerHTML="<strong>Name:</strong>"+(data._embedded.events[i].name)+'<br/>'
-        displayEl.innerHTML+="<strong>Address:</strong>"+JSON.stringify((data._embedded.events[i]._embedded.venues[0].address.line1))+"<br>"
+        //displayEl.innerHTML+="<strong>Address:</strong>"+JSON.stringify((data._embedded.events[i]._embedded.venues[0].address.line1))+"<br>"
         //displayEl.innerHTML+=JSON.stringify((data._embedded.events[i]._embedded.venues[0].location))+"<br>"
         displayEl.innerHTML+="<strong>Date:</strong>"+(data._embedded.events[i].dates.start.localDate)+" <br/>"
         displayEl.innerHTML+="<strong>Time:</strong>"+(data._embedded.events[i].dates.start.localTime)+"<br/>"
-       
-      }
+      } 
+    }
   })
 }
  
+ //append past searches and make them clickable
+    function appendCities(event) {
+      event.preventDefault()
+      var node = document.createElement("h1");
+      node.setAttribute("id","cityname")
+      node.textContent=localStorage.getItem("Location");
+      document.getElementById("past_searches").appendChild(node);
+      
+      node.addEventListener("click",function(){
+      document.getElementById('keywords').value = ""
+      var city=node.textContent 
+      localStorage.setItem("Location",city) 
+      initMap()
+      getApi()
+      })
+    }
+    
+    

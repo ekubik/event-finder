@@ -29,7 +29,8 @@ var userCity;
 var eventsList;
 var lat;
 var lon;
-var position;
+//var position;
+var coordinates;
 
 // current time and day
 var today = moment();
@@ -148,8 +149,8 @@ function getApi() {
           lon = Number(
             data._embedded.events[i]._embedded.venues[0].location.longitude
           );
-          position = new google.maps.LatLng(lat, lon);
-          eventsList.push(position);
+          coordinates = {position: new google.maps.LatLng(lat, lon)};
+          eventsList.push(coordinates);
           var displayEl = document.createElement("p");
           eventsListDiv.append(displayEl);
           displayEl.innerHTML =
@@ -166,7 +167,7 @@ function getApi() {
             "<br/>";
           console.log(lat);
           console.log(lon);
-          console.log(position);
+          console.log(coordinates);
           console.log(eventsList);
         }
       }

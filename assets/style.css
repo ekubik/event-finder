@@ -1,3 +1,8 @@
 body {
     font-family:'Nunito','Outfit', sans-serif;
 }
+
+#map {
+   height: 800px;
+
+}

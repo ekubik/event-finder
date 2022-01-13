@@ -7,49 +7,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Event Finder</title>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
   <link
     href="https://fonts.googleapis.com/css2?family=Comforter&family=Comforter+Brush&family=Nunito:wght@200&family=Outfit:wght@100&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="./assets/output.css" />
+  <link rel="stylesheet" href="./assets/style.css" />
   <link rel="icon" href="./assets/favicon.png" />
 </head>
-<header class="container mx-auto px-6 p-10">
-  <h1 class="text-3xl font-bold text-center">Event Finder</h1>
-  <div id="current-date-time" class="text-center"></div>
+<header class="">
+  <h1 class="">Event Finder</h1>
+  <div id="current-date-time" class=""></div>
 </header>
 
-<body class="font-sans text-light bg-dark">
+<body class="">
   <div>
-    <p class="text-center">
+    <p class="">
       Use this handy event locator to find events in your area. Just type
       in your location below, and let it find the perfect event for you!
     </p>
   </div>
 
   <div id="search-container">
-    <form id="search-box" class="text-center m-3">
-      <input type=text id="keywords" name="event-search" onfocus="this.value='' "placeholder="Enter a location"
-        class="border-gray-700 rounded"></input>
-      <button id="searchBtn" class="bg-third text-light rounded">Search</button>
+    <form id="search-box" class="">
+      <input type=text id="keywords" name="event-search" onfocus="this.value='' " placeholder="Enter a location"
+        class=""></input>
+      <button id="searchBtn" class="">Search</button>
     </form>
-    <div id="search-history" class="btn"></div>
-    <button type="button" id="clearBtn" class="btn">Clear</button>
+    <div id="search-history" class=""></div>
+    <button type="button" id="clearBtn" class="">Clear</button>
   </div>
 
 
-  <section id="container" class="container flex flex-row">
+  <section id="container" class="">
     <div id="map"></div>
-    
 
-    <div class="container flex flex-col">
+
+    <div class="">
       <h2>Local Events:</h2>
       <div id="events-list"></div>
     </div>
   </section>
   <h2>Past Searches</h2>
-    <div id ="past_searches"></div>
+  <div id="past_searches"></div>
   <footer>
-    <p class="text-sm text-center"> Coded as part of the Monash Coding Bootcamp program 2022</p>
+    <p class=""> Coded as part of the Monash Coding Bootcamp program 2022</p>
   </footer>
 
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -57,7 +59,7 @@
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiZYv6s5ocv7IYkiRQLleoe8MXRsMqtRc&callback=initMap&libraries=places&v=weekly""
     async></script>
-  <script src="./assets/script.js"></script>
+  <script src=" ./assets/script.js"></script>
 </body>
 
 </html>

@@ -23,46 +23,48 @@
 
 
     </nav>
-    <h1 class="title is-size-1 has-text-light has-text-centered">Event Finder</h1>
+    <h1 id="title" class="title is-size-1 has-text-light has-text-centered">Event Finder</h1>
     <div id="current-date-time" class="subtitle has-text-light has-text-centered"></div>
   </header>
   <div>
-    <p class="has-text-centered m-2">
+    <p id="comment" class="has-text-centered m-2">
       Use this handy event locator to find events in your area. Just type
       in your location below, and let it find the perfect event for you!
     </p>
   </div>
 
-  <div id="search-container" class="level">
-    <form id="search-box" class="control has-icons-left level-item">
+  <div id="search-container" class="level column is-5">
+    <form id="search-box" class="control has-icons-left level-item is-flex">
       <input autocomplete="on" spellcheck="true" autocapitalize="on" type=text id="keywords" name="event-search"
-        onfocus=" this.value=''" placeholder="Enter a location" class="input is-normal"></input>
-      <span class="icon is-medium is-left">
+        onfocus=" this.value=''" placeholder="Enter a location"
+        class="input is-normal has-background-dark has-text-light is-flex is-justify-content-center"></input>
+      <span class=" icon is-medium is-left">
         <i class="fas fa-map-marked-alt"></i>
       </span>
-      <button id="searchBtn" class="button">Search</button>
+      <button id="searchBtn" class="button has-background-dark has-text-light">Search</button>
+
     </form>
     <div id="search-history" class="has-text-light"></div>
 
   </div>
 
 
-  <section id="container" class="container columns">
-    <div id="map" class="column is-mobile is-fullheight"></div>
+  <section id="container" class="container columns m-3">
+    <div id="map" class="column is-mobile is-fullheight m-3"></div>
 
 
-    <fieldset class="column is-6">
+    <fieldset class="column is-6 m-3">
       <legend class="">
         <h2><i class="far fa-calendar"></i> Local Events:</h2>
       </legend>
-      <div id="events-list" class="has-text-light"></div>
+      <div id="events-list" class="has-text-light block-list is-small is-outlined"></div>
 
     </fieldset>
   </section>
-  <section class="container">
+  <section class="container m-3">
     <h2>Past Searches:</h2>
     <div id="past_searches"></div>
-    <button type="button" id="clearBtn" class="button is-outlined">Clear</button>
+    <button type="button" id="clearBtn" class="button is-outlined has-background-dark has-text-light">Clear</button>
   </section>
 
   <footer class="footer has-text-light has-background-dark">

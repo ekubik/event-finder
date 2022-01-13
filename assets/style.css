@@ -1,8 +1,69 @@
+:root {
+    --darkColor: rgb(30, 35, 39);
+    --lightColor: rgb(235, 217, 183);
+    --primeColor: rgb(69, 187, 187);
+    --secondColor:rgba(175, 59, 59, 0.945);
+    --thirdColor: rgba(78, 78, 73, 0.87);
+    --fourthColor: rgba(59, 76, 175, 0.945);
+    --dashedBorder: dashed 2px var(--lightColor);
+    --solidBorder: solid 1px var(--lightColor);
+    --doubleBorder: double 3px var(--lightColor);
+    --borderRadius: 1rem;
+   }
+
+
 body {
     font-family:'Nunito','Outfit', sans-serif;
 }
 
+::selection {
+    background-color: var(--primeColor);
+    color: var(--darkColor);
+  }
+
+
 #map {
    height: 800px;
 
+}
+
+.custom-map-control-button {
+    border-radius: 0.5rem;
+    padding: 0.5em;
+    font-size: 1rem;
+    font-family: 'Nunito','Outfit', sans-serif;
+    background-color: var(--darkColor);
+    color: var(--lightColor);
+    cursor: pointer;
+
+}
+
+/* .eventList {
+    padding: 0.1rem;
+    margin: 0.1rem;
+    border: var(--dashedBorder);
+    border-radius: var(--borderRadius);
+
+} */
+
+.eventList:hover ,input:hover, #searchBtn:hover, #clearBtn:hover {
+    box-shadow: inset 0px 0px 8px var(--primeColor), 0 0 20px var(--primeColor);
+  transition: all 0.5s ease-in-out;
+} 
+
+#custom-map-control-button:hover {
+    background-color: var(--primeColor);
+    color: var(--darkColor);
+    transition: all 0.5s ease-in-out;
+
+}
+
+
+#title:hover {
+    text-shadow: 0px 0px 20px var(--primeColor);
+    transition: all 0.5s ease-in-out;
+} 
+
+#search-container {
+    margin: 0 auto;
 }

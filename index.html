@@ -35,8 +35,8 @@
 
   <div id="search-container" class="level">
     <form id="search-box" class="control has-icons-left level-item">
-      <input type=text id="keywords" name="event-search" onfocus=" this.value=''" placeholder="Enter a location"
-        class="input is-normal"></input>
+      <input autocomplete="on" spellcheck="true" autocapitalize="on" type=text id="keywords" name="event-search"
+        onfocus=" this.value=''" placeholder="Enter a location" class="input is-normal"></input>
       <span class="icon is-medium is-left">
         <i class="fas fa-map-marked-alt"></i>
       </span>
@@ -48,7 +48,7 @@
 
 
   <section id="container" class="container columns">
-    <div id="map" class="column is-mobile block"></div>
+    <div id="map" class="column is-mobile is-fullheight"></div>
 
 
     <fieldset class="column is-6">

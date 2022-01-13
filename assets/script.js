@@ -9,7 +9,9 @@ const container = document.getElementById("container");
 const mapDiv = document.getElementById("map");
 const eventsListDiv = document.getElementById("events-list");
 
-const myBtn = document.getElementById("searchBtn");
+
+const myBtn = document.getElementById("searchBtn")
+
 const clearBtn = document.getElementById("clearBtn");
 const searchInput = document.getElementById("keywords");
 
@@ -113,6 +115,28 @@ function initMap() {
 //     : "Error: Your browser doesn't support geolocation."
 // );
 // infoWindow.open(map);
+
+//}
+
+
+//}
+
+// const request = {
+// query: localStorage.getItem("Location"),
+//fields: ["name", "geometry"],
+//};
+
+//service = new google.maps.places.PlacesService(map);
+//service.findPlaceFromQuery(request, (results, status) => {
+// if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+//for (let i = 0; i < results.length; i++) {
+// createMarker(results[i]);
+// }
+
+//map.setCenter(results[0].geometry.location);
+//}
+//});
+
 //}
 
 //}
@@ -153,22 +177,28 @@ function createMarker(place) {
 // var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?&classificationName=music&city=" + city + "&apikey=" + apiKeyTM
 // function getApi() {
 
+
+
+
 myBtn.addEventListener("click", function searchCity(event) {
-  event.preventDefault();
-  var city = document.getElementById("keywords").value;
-  if (city === "" || !isNaN(city)) {
-    alert("Please Enter a city or a keyword.");
+  event.preventDefault()
+  var city = document.getElementById("keywords").value
+  if (city === '' || !isNaN(city)) {
+    alert('Please Enter a city or a keyword.');
     return;
-  } else {
-    localStorage.setItem("Location", city);
-    initMap();
-    getApi();
   }
-});
+  else {
+    localStorage.setItem("Location", city)
+    initMap()
+    getApi()
+  }
+})
 
-myBtn.addEventListener("click", appendCities);
+myBtn.addEventListener("click", appendCities)
 
-//retrieving events data and displaying them
+
+//retrieving events data and displaying them  
+
 function getApi() {
   //new map with the location we insert
   function initMap1(data) {
@@ -197,20 +227,19 @@ function getApi() {
     });
   }
 
-  var city = localStorage.getItem("Location");
-  var queryURL =
-    "https://app.ticketmaster.com/discovery/v2/events.json?&classificationName=music&city=" +
-    city +
-    "&apikey=" +
-    apiKeyTM;
 
-  initMap1();
+  var city = localStorage.getItem("Location")
+  var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?&classificationName=music&city=" + city + "&apikey=" + apiKeyTM
+
+  initMap1()
+
 
   fetch(queryURL)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
+
       console.log(data);
 
       $("#events-list").html("<div></div>");
@@ -254,32 +283,41 @@ function getApi() {
 
 var markerImage = "./assets/music-note-icon.png";
 
+
 function addMarker(location, map) {
   var marker = new google.maps.Marker({
     position: location,
     title: "",
+
     icon: markerImage,
     map: map,
+
   });
 }
 
 //append past searches and make them clickable
 function appendCities(event) {
-  event.preventDefault();
+
+  event.preventDefault()
+
   var node = document.createElement("h1");
   //node.setAttribute("id","cityname")
   node.textContent = localStorage.getItem("Location");
   document.getElementById("past_searches").appendChild(node);
 
   node.addEventListener("click", function () {
-    document.getElementById("keywords").value = "";
-    var city = node.textContent;
-    localStorage.setItem("Location", city);
 
-    initMap();
-    getApi();
-  });
+    document.getElementById('keywords').value = ""
+    var city = node.textContent
+    localStorage.setItem("Location", city)
+
+    initMap()
+    getApi()
+  })
 }
+
+
+
 
 // for (var i = 0; i < 5; i++) {
 //   var displayEl = document.createElement('p')

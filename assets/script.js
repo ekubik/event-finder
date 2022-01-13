@@ -245,13 +245,17 @@ fetch(queryURL)
   })
 }    
 
+var markerImage = "./assets/music-note-icon.png";
+
 function addMarker(location, map) {
-    var marker = new google.maps.Marker({
-      position: location,
-      title:"",
-      map:map
-      });
+  var marker = new google.maps.Marker({
+    position: location,
+    title: "",
+    icon: markerImage,
+    map: map,
+  });
 }
+
  
 //append past searches and make them clickable
 function appendCities(event) {

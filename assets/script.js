@@ -9,7 +9,9 @@ const container = document.getElementById("container");
 const mapDiv = document.getElementById("map");
 const eventsListDiv = document.getElementById("events-list");
 
+
 const myBtn = document.getElementById("searchBtn")
+
 const clearBtn = document.getElementById("clearBtn");
 const searchInput = document.getElementById("keywords");
 
@@ -113,6 +115,7 @@ function initMap() {
 //     : "Error: Your browser doesn't support geolocation."
 // );
 // infoWindow.open(map);
+
 //}
 
 
@@ -133,8 +136,27 @@ function initMap() {
 //map.setCenter(results[0].geometry.location);
 //}
 //});
+
 //}
 
+//}
+
+// const request = {
+// query: localStorage.getItem("Location"),
+//fields: ["name", "geometry"],
+//};
+
+//service = new google.maps.places.PlacesService(map);
+//service.findPlaceFromQuery(request, (results, status) => {
+// if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+//for (let i = 0; i < results.length; i++) {
+// createMarker(results[i]);
+// }
+
+//map.setCenter(results[0].geometry.location);
+//}
+//});
+//}
 
 function createMarker(place) {
   if (!place.geometry || !place.geometry.location) return;
@@ -150,12 +172,11 @@ function createMarker(place) {
   // });
 }
 
-
 // var city = "Melbourne"
-
 
 // var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?&classificationName=music&city=" + city + "&apikey=" + apiKeyTM
 // function getApi() {
+
 
 
 
@@ -177,6 +198,7 @@ myBtn.addEventListener("click", appendCities)
 
 
 //retrieving events data and displaying them  
+
 function getApi() {
   //new map with the location we insert
   function initMap1(data) {
@@ -205,61 +227,86 @@ function getApi() {
     });
   }
 
+
   var city = localStorage.getItem("Location")
   var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?&classificationName=music&city=" + city + "&apikey=" + apiKeyTM
 
   initMap1()
+
 
   fetch(queryURL)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data)
 
-      $("#events-list").html('<div></div>');
-      //checking if there are events on the user city  
+      console.log(data);
+
+      $("#events-list").html("<div></div>");
+      //checking if there are events on the user city
       if (data.page.totalElements == 0) {
-        var displayEl = document.createElement('p')
-        eventsListDiv.append(displayEl)
-        displayEl.innerHTML = "No Events for this city"
-      }
-      else {
+        var displayEl = document.createElement("p");
+        eventsListDiv.append(displayEl);
+        displayEl.innerHTML = "No Events for this city";
+      } else {
         for (var i = 0; i < 10; i++) {
-          var displayEl = document.createElement('p')
-          eventsListDiv.append(displayEl)
-          displayEl.innerHTML = "<strong>Name:</strong>" + (data._embedded.events[i].name) + '<br/>'
+          var displayEl = document.createElement("p");
+          eventsListDiv.append(displayEl);
+          displayEl.innerHTML =
+            "<strong>Name:</strong>" + data._embedded.events[i].name + "<br/>";
           //displayEl.innerHTML+="<strong>Address:</strong>"+JSON.stringify((data._embedded.events[i]._embedded.venues[0].address.line1))+"<br>"
           //displayEl.innerHTML+=JSON.parse((data._embedded.events[i]._embedded.venues[0].location.latitude))+"<br>"
           //displayEl.innerHTML+=JSON.parse((data._embedded.events[i]._embedded.venues[0].location.longitude))+"<br>"
-          displayEl.innerHTML += "<strong>Date:</strong>" + (data._embedded.events[i].dates.start.localDate) + " <br/>"
-          displayEl.innerHTML += "<strong>Time:</strong>" + (data._embedded.events[i].dates.start.localTime) + "<br/>"
-          //putting markers on every event  
-          var location = { lat: JSON.parse((data._embedded.events[i]._embedded.venues[0].location.latitude)), lng: JSON.parse((data._embedded.events[i]._embedded.venues[0].location.longitude)) };
-          addMarker(location, map)
+          displayEl.innerHTML +=
+            "<strong>Date:</strong>" +
+            data._embedded.events[i].dates.start.localDate +
+            " <br/>";
+          displayEl.innerHTML +=
+            "<strong>Time:</strong>" +
+            data._embedded.events[i].dates.start.localTime +
+            "<br/>";
 
+          //putting markers on every event
+          var location = {
+            lat: JSON.parse(
+              data._embedded.events[i]._embedded.venues[0].location.latitude
+            ),
+            lng: JSON.parse(
+              data._embedded.events[i]._embedded.venues[0].location.longitude
+            ),
+          };
+          addMarker(location, map);
         }
       }
-    })
+    });
 }
+
+var markerImage = "./assets/music-note-icon.png";
+
 
 function addMarker(location, map) {
   var marker = new google.maps.Marker({
     position: location,
     title: "",
-    map: map
+
+    icon: markerImage,
+    map: map,
+
   });
 }
 
 //append past searches and make them clickable
 function appendCities(event) {
+
   event.preventDefault()
+
   var node = document.createElement("h1");
   //node.setAttribute("id","cityname")
   node.textContent = localStorage.getItem("Location");
   document.getElementById("past_searches").appendChild(node);
 
   node.addEventListener("click", function () {
+
     document.getElementById('keywords').value = ""
     var city = node.textContent
     localStorage.setItem("Location", city)
@@ -268,6 +315,7 @@ function appendCities(event) {
     getApi()
   })
 }
+
 
 
 
@@ -283,8 +331,8 @@ function appendCities(event) {
 // }
 //}
 
-//display default map 
-getApi()
+//display default map
+getApi();
 
 // clearBtn
 
@@ -293,11 +341,10 @@ clearBtn.addEventListener("click", function () {
   localStorage.removeItem("Location");
   searchHistory.innerText = "";
   //searchHistory.removeChild(historyBtn);
-  //$("past_searches").html('<div></div>'); 
-
+  //$("past_searches").html('<div></div>');
 });
 
-// searchBtn 
+// searchBtn
 // searchBtn.addEventListener("click", function (event) {
 //   event.preventDefault();
 //   console.log(searchInput.value);
@@ -324,20 +371,20 @@ clearBtn.addEventListener("click", function () {
 
 // displaying resent 5 searches in html (need to set css for btn class)
 //function displayRecentSearches() {
-  //searchHistory.innerHTML = "";
-  //const recentFiveSearch = userInputArr.slice(-5);
-  // recentFiveSearch.forEach(function (item) {
-  //   const historyBtn = document.createElement("button");
-  //   historyBtn.textContent = item;
-  //   historyBtn.style.textTransform = "capitalize";
-  //   historyBtn.setAttribute("class", "btn");
-  //   searchHistory.appendChild(historyBtn);
+//searchHistory.innerHTML = "";
+//const recentFiveSearch = userInputArr.slice(-5);
+// recentFiveSearch.forEach(function (item) {
+//   const historyBtn = document.createElement("button");
+//   historyBtn.textContent = item;
+//   historyBtn.style.textTransform = "capitalize";
+//   historyBtn.setAttribute("class", "btn");
+//   searchHistory.appendChild(historyBtn);
 
-  //   // historyBtn.addEventListener("click", function (event) {
-  //   //   console.log(event.target.textContent);
-  //   //   const clickedCity = event.target.textContent;
-  //   //   getApi(clickedCity);
-  //   // })
+//   // historyBtn.addEventListener("click", function (event) {
+//   //   console.log(event.target.textContent);
+//   //   const clickedCity = event.target.textContent;
+//   //   getApi(clickedCity);
+//   // })
 
-  // })
+// })
 //}

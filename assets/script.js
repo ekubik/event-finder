@@ -234,7 +234,6 @@ function getApi() {
           //displayEl.innerHTML+=JSON.parse((data._embedded.events[i]._embedded.venues[0].location.longitude))+"<br>"
           displayEl.innerHTML += "<strong>Date:</strong>" + (data._embedded.events[i].dates.start.localDate) + " <br/>"
           displayEl.innerHTML += "<strong>Time:</strong>" + (data._embedded.events[i].dates.start.localTime) + "<br/>"
-          displayEl.setAttribute("class", "eventList");
           //putting markers on every event  
           var location = { lat: JSON.parse((data._embedded.events[i]._embedded.venues[0].location.latitude)), lng: JSON.parse((data._embedded.events[i]._embedded.venues[0].location.longitude)) };
           addMarker(location, map)

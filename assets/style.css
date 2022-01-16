@@ -21,11 +21,21 @@ body {
     color: var(--darkColor);
   }
 
+#title {
+    font-size: 5rem;
+    font-family: 'Righteous', 'Nunito','sans-serif';
+}
+
+#current-date-time, #events {
+    font-family: 'Righteous', 'Nunito','sans-serif';
+}
 
 #map {
-   height: 800px;
+   height: 976px;
 
 }
+
+
 
 .custom-map-control-button {
     border-radius: 0.5rem;
@@ -38,18 +48,6 @@ body {
 
 }
 
-/* .eventList {
-    padding: 0.1rem;
-    margin: 0.1rem;
-    border: var(--dashedBorder);
-    border-radius: var(--borderRadius);
-
-} */
-
-.eventList:hover ,input:hover, #searchBtn:hover, #clearBtn:hover {
-    box-shadow: inset 0px 0px 8px var(--primeColor), 0 0 20px var(--primeColor);
-  transition: all 0.5s ease-in-out;
-} 
 
 #events-list p {
     background-color: var(--primeColor);
@@ -60,6 +58,11 @@ body {
     text-align: left;
     
 }
+
+#events-list p:hover, input:hover, #searchBtn:hover, #clearBtn:hover {
+    box-shadow: inset 0px 0px 8px var(--primeColor), 0 0 20px var(--primeColor);
+  transition: all 0.5s ease-in-out;
+} 
 
 
 #custom-map-control-button:hover {
@@ -78,3 +81,22 @@ body {
 #search-container {
     margin: 0 auto;
 }
+
+@media screen and (max-width:480px) {
+
+    body {
+        font-size:1.5rem;
+    }
+
+    #comment {
+        font-size:1.5rem;
+    }
+    
+    #map {
+        height: 500px;
+    }
+    #contact {
+        font-size: 0.8rem;
+    }
+
+         

@@ -26,7 +26,7 @@ body {
     font-family: 'Righteous', 'Nunito','sans-serif';
 }
 
-#current-date-time, #events {
+#current-date-time, #events, #past-search {
     font-family: 'Righteous', 'Nunito','sans-serif';
 }
 
@@ -59,7 +59,7 @@ body {
     
 }
 
-#events-list p:hover, input:hover, #searchBtn:hover, #clearBtn:hover {
+.btn:hover, #events-list p:hover, input:hover, #searchBtn:hover, #clearBtn:hover {
     box-shadow: inset 0px 0px 8px var(--primeColor), 0 0 20px var(--primeColor);
   transition: all 0.5s ease-in-out;
 } 
@@ -80,6 +80,24 @@ body {
 
 #search-container {
     margin: 0 auto;
+}
+
+.btn {
+    margin:0 0.25em;
+    background-color: #363636;
+    border-color: #dbdbdb;
+    border-radius: 4px;
+    height:2.5em;
+    border-width: 1px;
+    color: var(--lightColor);
+    cursor: pointer;
+    justify-content: center;
+    padding-bottom: calc(0.5em - 1px);
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: calc(0.5em - 1px);
+    text-align: center;
+    white-space: nowrap;
 }
 
 @media screen and (max-width:480px) {

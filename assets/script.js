@@ -236,8 +236,6 @@ myBtn.addEventListener("click", function searchCity(event){
 myBtn.addEventListener("click",saveRecentSearches)
 
 clearBtn.addEventListener("click",function(){
-  localStorage.removeItem("savedSearches");    
-  localStorage.removeItem("Location")
   searchHistory.innerHTML = ""
   userInputArr=[]
  })

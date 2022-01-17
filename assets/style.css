@@ -11,7 +11,7 @@ body {
 }
 
 ::selection {
-    background-color: var(--fourthColor);
+    background-color: var(--secondColor);
     color: var(--darkColor);
   }
 

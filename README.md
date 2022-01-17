@@ -5,6 +5,15 @@ The project is a web application which allows users to search for events in thei
 The application was created using HTML and Javascript, as well as CSS and Bulma CSS framework.
 </br>
 
+The project was motivated by the following USER STORY:
+</br>
+AS A person who is interested in music events
+</br>
+I WANT to find music events in the location of my choice,
+</br>
+THEN I want to see their location on a map, in relation to my searched location
+</br>
+
 APIs used:
 
 <li>Google Maps </li>
@@ -23,3 +32,16 @@ The project:
 </br>
 </br>
 The project can be viewed at: <a href="https://ekubik.github.io/event-finder/">https://ekubik.github.io/event-finder/ </a>
+
+</br>
+</br>
+
+<img src="./assets/eventfinder-home.png" />
+<img src= "./assets/eventfinder-search.png"/>
+
+
+The design of the application is responsive, with the contents adjusting for best view on different screen sizes:
+
+</br>
+
+<img src = "./assets/eventfinder-mobileview.png"/>
